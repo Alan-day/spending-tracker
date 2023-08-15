@@ -3,7 +3,7 @@ import "./App.css";
 import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
-  return <div className="App">My page
+  return <div className="App">Spending Tracker
   <LoginPage/>
   </div>;
 }
