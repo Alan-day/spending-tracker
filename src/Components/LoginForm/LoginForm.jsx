@@ -1,7 +1,13 @@
 import React from "react";
 import "./LoginForm.scss";
 
-const LoginForm = ({ handleSubmit, login, password }) => {
+const LoginForm = ({
+  handleSubmit,
+  email,
+  password,
+  loginInput,
+  passwordInput,
+}) => {
   return (
     <>
       <div className="login-form__container">
@@ -9,19 +15,21 @@ const LoginForm = ({ handleSubmit, login, password }) => {
           <label className="form__login">
             Email
             <input
-              value={login}
+              value={email}
               type="text"
               label="login"
               className="login-form__container--element"
+              onInput={loginInput}
             />
           </label>
           <label className="form__password">
             Password
             <input
               value={password}
-              type="text"
+              type="password"
               label="password"
               className="login-form__container--element"
+              onInput={passwordInput}
             />
           </label>
         </form>
