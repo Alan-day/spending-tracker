@@ -1,20 +1,27 @@
-import { React, useNavigate } from "react";
+import { React } from "react";
 
+import { useNavigate } from "react-router-dom";
 const Homepage = () => {
   const navigate = useNavigate();
 
   const moveToExpense = () => {
-    navigate("/addExpense");
+    return navigate("/addExpense");
   };
 
   const moveToGraph = () => {
-    navigate("/graph");
+    return navigate("/graph");
   };
+
+  const moveToHomepage = () => {
+    return navigate("/homepage");
+  };
+
   return (
     <>
       <div className="homepage-container">
         <button onClick={moveToExpense}>Add new expense</button>
         <button onClick={moveToGraph}>All expenses</button>
+        <button onClick={moveToHomepage}>Homepage</button>
       </div>
     </>
   );
