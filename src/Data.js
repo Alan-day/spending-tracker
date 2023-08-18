@@ -1,5 +1,10 @@
 export const UserData = [
-  { category: "Personal", spent: 12.99, date: "01/08/2023" },
+  { category: "Going out", spent: 1.0, date: "28/07/2023" },
+  { category: "Personal", spent: 13.99, date: "28/07/2023" },
+  { category: "Groceries", spent: 20.99, date: "29/07/2023" },
+  { category: "Personal", spent: 1.99, date: "30/07/2023" },
+  { category: "Going out", spent: 2.99, date: "31/07/2023" },
+  { category: "Groceries", spent: 11.99, date: "01/08/2023" },
   { category: "Personal", spent: 11.0, date: "02/08/2023" },
   { category: "Going out", spent: 5.8, date: "03/08/2023" },
   { category: "Groceries", spent: 12.99, date: "04/08/2023" },
