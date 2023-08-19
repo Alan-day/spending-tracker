@@ -5,14 +5,14 @@ import { UserData } from "../../Data.js";
 import "./Graphpage.scss";
 const Graphpage = () => {
   const categories = ["Personal", "Bills", "Groceries", "Going out"];
-  const [month, setMonth] = useState("");
+
   const [namedMonth, setNamedMonth] = useState("");
   const spendingByDateAndCategory = {}; // empty object not array
 
   const currentDate = new Date();
 
   const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
-
+  const [month, setMonth] = useState(currentMonth);
   // UserData.forEach((data) => {
   //   if (
   //     !spendingByDateAndCategory[data.date])
@@ -36,10 +36,8 @@ const Graphpage = () => {
       spendingByDateAndCategory[data.date][data.category] += data.spent;
     }
   });
-  console.log(spendingByDateAndCategory);
 
   useEffect(() => {
-    setMonth(currentMonth);
     handleMonths();
   }, [month]);
 
@@ -48,11 +46,98 @@ const Graphpage = () => {
     label: category,
     data: labels.map((date) => spendingByDateAndCategory[date][category] || 0),
   }));
-  const uniqueDates = [...new Set(UserData.map((data) => data.date))];
+
+  // const uniqueDates = [...new Set(UserData.map((data) => data.date))];
 
   const userData = {
     labels: labels,
     datasets: datasets,
+  };
+  const handleButtonDecrease = () => {
+    switch (month) {
+      case "01":
+        setMonth("12");
+        break;
+      case "02":
+        setMonth("01");
+        break;
+      case "03":
+        setMonth("02");
+        break;
+      case "04":
+        setMonth("03");
+        break;
+      case "05":
+        setMonth("04");
+        break;
+      case "06":
+        setMonth("05");
+        break;
+      case "07":
+        setMonth("06");
+        break;
+      case "08":
+        setMonth("07");
+        break;
+      case "09":
+        setMonth("08");
+        break;
+      case "10":
+        setMonth("09");
+        break;
+      case "11":
+        setMonth("10");
+        break;
+      case "12":
+        setMonth("11");
+        break;
+
+      default:
+        setNamedMonth("month");
+    }
+  };
+  const handleButtonIncrease = () => {
+    switch (month) {
+      case "01":
+        setMonth("02");
+        break;
+      case "02":
+        setMonth("03");
+        break;
+      case "03":
+        setMonth("04");
+        break;
+      case "04":
+        setMonth("05");
+        break;
+      case "05":
+        setMonth("06");
+        break;
+      case "06":
+        setMonth("07");
+        break;
+      case "07":
+        setMonth("08");
+        break;
+      case "08":
+        setMonth("09");
+        break;
+      case "09":
+        setMonth("10");
+        break;
+      case "10":
+        setMonth("11");
+        break;
+      case "11":
+        setMonth("12");
+        break;
+      case "12":
+        setMonth("01");
+        break;
+
+      default:
+        setNamedMonth("month");
+    }
   };
 
   const handleMonths = () => {
@@ -101,7 +186,9 @@ const Graphpage = () => {
 
   return (
     <div className="graphpage-container">
+      <button onClick={handleButtonDecrease}>Previous Month</button>
       {namedMonth}
+      <button onClick={handleButtonIncrease}>Next Month</button>
       <Graph chartData={userData} />
       <Navbar />
     </div>
