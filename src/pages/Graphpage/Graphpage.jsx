@@ -6,52 +6,47 @@ import "./Graphpage.scss";
 const Graphpage = () => {
   const categories = ["Personal", "Bills", "Groceries", "Going out"];
   const [month, setMonth] = useState("");
-
+  const [namedMonth, setNamedMonth] = useState("");
   const spendingByDateAndCategory = {}; // empty object not array
 
   const currentDate = new Date();
 
   const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
 
+  // UserData.forEach((data) => {
+  //   if (
+  //     !spendingByDateAndCategory[data.date])
+  //    {
+  //     spendingByDateAndCategory[data.date] = {};
+  //     categories.forEach((category) => {
+  //       spendingByDateAndCategory[data.date][category] = 0;
+  //     });
+  //   }
+  // });
+
   UserData.forEach((data) => {
-    if (!spendingByDateAndCategory[data.date]) {
-      spendingByDateAndCategory[data.date] = {};
-      categories.forEach((category) => {
-        spendingByDateAndCategory[data.date][category] = 0;
-      });
+    if (data.date.includes(`/${month}/`)) {
+      // Check if the date includes the filtered month
+      if (!spendingByDateAndCategory[data.date]) {
+        spendingByDateAndCategory[data.date] = {};
+        categories.forEach((category) => {
+          spendingByDateAndCategory[data.date][category] = 0;
+        });
+      }
+      spendingByDateAndCategory[data.date][data.category] += data.spent;
     }
   });
-
-  const filteredMonth = "08"; // Replace with the desired month
-
   console.log(spendingByDateAndCategory);
-
-  const filteredSpendingPerMonth = Object.keys(spendingByDateAndCategory)
-    .filter((date) => date.includes(filteredMonth)) // Filter based on the month
-    .map((date) => ({
-      date: date,
-      categories: spendingByDateAndCategory[date],
-    }));
-
-    Object.keys(spendingByDateAndCategory).forEach(date => {
-      if (date.startsWith(filteredMonth)) {
-        filteredSpendingPerMonth[date] = { ...spendingByDateAndCategory[date] };
-      }
-    });
-  console.log(filteredSpendingPerMonth);
 
   useEffect(() => {
     setMonth(currentMonth);
-  }, []);
+    handleMonths();
+  }, [month]);
 
-  UserData.forEach((data) => {
-    filteredSpendingPerMonth[data.date][data.category] += data.spent;
-  });
-
-  const labels = Object.keys(filteredSpendingPerMonth);
-  const datasets = categories.map(category => ({
+  const labels = Object.keys(spendingByDateAndCategory);
+  const datasets = categories.map((category) => ({
     label: category,
-    data: labels.map(date => filteredSpendingPerMonth[date][category] || 0),
+    data: labels.map((date) => spendingByDateAndCategory[date][category] || 0),
   }));
   const uniqueDates = [...new Set(UserData.map((data) => data.date))];
 
@@ -60,22 +55,53 @@ const Graphpage = () => {
     datasets: datasets,
   };
 
-  // console.log(UserData.map((data) => data.date));
+  const handleMonths = () => {
+    switch (month) {
+      case "01":
+        setNamedMonth("January");
+        break;
+      case "02":
+        setNamedMonth("February");
+        break;
+      case "03":
+        setNamedMonth("March");
+        break;
+      case "04":
+        setNamedMonth("April");
+        break;
+      case "05":
+        setNamedMonth("May");
+        break;
+      case "06":
+        setNamedMonth("June");
+        break;
+      case "07":
+        setNamedMonth("July");
+        break;
+      case "08":
+        setNamedMonth("August");
+        break;
+      case "09":
+        setNamedMonth("September");
+        break;
+      case "10":
+        setNamedMonth("October");
+        break;
+      case "11":
+        setNamedMonth("November");
+        break;
+      case "12":
+        setNamedMonth("December");
+        break;
 
-  // switch (expression) {
-  //   case x:
-  //     // code block
-  //     break;
-  //   case y:
-  //     // code block
-  //     break;
-  //   default:
-  //   // code block
-  // }
+      default:
+        setNamedMonth("month");
+    }
+  };
 
   return (
     <div className="graphpage-container">
-      Graphpage
+      {namedMonth}
       <Graph chartData={userData} />
       <Navbar />
     </div>
