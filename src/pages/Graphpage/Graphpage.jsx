@@ -13,27 +13,13 @@ const Graphpage = () => {
 
   const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
   const [month, setMonth] = useState(currentMonth);
-  // UserData.forEach((data) => {
-  //   if (
-  //     !spendingByDateAndCategory[data.date])
-  //    {
-  //     spendingByDateAndCategory[data.date] = {};
-  //     categories.forEach((category) => {
-  //       spendingByDateAndCategory[data.date][category] = 0;
-  //     });
-  //   }
-  // });
 
   UserData.forEach((data) => {
     if (data.date.includes(`/${month}/`)) {
-      // Check if the date includes the filtered month
-      if (!spendingByDateAndCategory[data.date]) {
-        spendingByDateAndCategory[data.date] = {};
-        categories.forEach((category) => {
-          spendingByDateAndCategory[data.date][category] = 0;
-        });
+      if (!spendingByDateAndCategory[data.category]) {
+        spendingByDateAndCategory[data.category] = 0; // Initialize spending for the category
       }
-      spendingByDateAndCategory[data.date][data.category] += data.spent;
+      spendingByDateAndCategory[data.category] += data.spent; // Accumulate spending amount
     }
   });
 
@@ -44,10 +30,8 @@ const Graphpage = () => {
   const labels = Object.keys(spendingByDateAndCategory);
   const datasets = categories.map((category) => ({
     label: category,
-    data: labels.map((date) => spendingByDateAndCategory[date][category] || 0),
+    data: labels.map((category) => spendingByDateAndCategory[category] || 0),
   }));
-
-  // const uniqueDates = [...new Set(UserData.map((data) => data.date))];
 
   const userData = {
     labels: labels,

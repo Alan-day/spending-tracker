@@ -12,7 +12,7 @@ const LoginForm = ({
     <>
       <div className="login-form__container">
         <form>
-          <label className="form__login">
+        <label className="login-form__container--heading">
             Email
             <input
               value={email}
@@ -22,7 +22,7 @@ const LoginForm = ({
               onInput={loginInput}
             />
           </label>
-          <label className="form__password">
+          <label className="login-form__container--heading">
             Password
             <input
               value={password}

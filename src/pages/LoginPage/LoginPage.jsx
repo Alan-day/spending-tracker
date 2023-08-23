@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import LoginForm from "../../Components/LoginForm/LoginForm";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase.js";
+import "./LoginPage.scss";
 
 const LoginPage = ({ setUser }) => {
   const [password, setPassword] = useState("");
@@ -42,7 +43,8 @@ const LoginPage = ({ setUser }) => {
   };
   console.log(email);
   return (
-    <div>
+    <div className="login-container">
+      <h1 className="login-container__heading">£wift</h1>
       <LoginForm
         handleSubmit={handleSubmit}
         password={password}
@@ -51,16 +53,14 @@ const LoginPage = ({ setUser }) => {
         passwordInput={handleSetPassword}
       />
 
-      <div>
-        {emailErrorMessage && (
-          <div className="displayMessage">
-            <h1 className="heading">Please enter a valid email</h1>
-            <button className="login-container__button" onClick={hideError}>
-              Try again
-            </button>
-          </div>
-        )}
-      </div>
+      {emailErrorMessage && (
+        <div className="displayMessage">
+          <h1 className="heading">Please enter a valid email</h1>
+          <button className="login-container__button" onClick={hideError}>
+            Try again
+          </button>
+        </div>
+      )}
     </div>
   );
 };

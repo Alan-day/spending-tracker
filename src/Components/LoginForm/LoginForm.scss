@@ -1,13 +1,30 @@
 .login-form {
   &__container {
+    padding-top: 10px;
+    height: 100%;
+    background-color: rgb(156, 240, 240);
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &--button {
+      margin: 10px 0px 20px 0px;
+      padding: 5px 15px;
+      border: none;
+      border-radius: 5px;
+      color: navy;
+      font-weight: 700;
+      background-color: orange;
+    }
+
     &--element {
+      border: none;
+      border-radius: 5px;
       display: flex;
       width: 100px;
       align-self: center;
+      margin: 5px 10px;
     }
   }
 }
