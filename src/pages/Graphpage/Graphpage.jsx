@@ -3,6 +3,7 @@ import Graph from "../../Components/Graph/Graph";
 import Navbar from "../../Components/Navbar/Navbar";
 import { UserData } from "../../Data.js";
 import "./Graphpage.scss";
+import SpendingTilesList from "../../Components/SpendingTilesList/SpendingTilesList";
 
 const Graphpage = () => {
   const [namedMonth, setNamedMonth] = useState("");
@@ -41,6 +42,14 @@ const Graphpage = () => {
     labels: labels,
     datasets: datasets,
   };
+
+  const listData = [];
+  for (const data of UserData) {
+    if (data.date.includes(`/${month}/`)) {
+      listData.push(data);
+    }
+  }
+  console.log(listData);
 
   const handleButtonDecrease = () => {
     switch (month) {
@@ -179,6 +188,8 @@ const Graphpage = () => {
       {namedMonth}
       <button onClick={handleButtonIncrease}>Next Month</button>
       <Graph chartData={userData} />
+
+      <SpendingTilesList userData={listData} />
       <Navbar />
     </div>
   );
