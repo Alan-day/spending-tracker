@@ -3,40 +3,45 @@ import Graph from "../../Components/Graph/Graph";
 import Navbar from "../../Components/Navbar/Navbar";
 import { UserData } from "../../Data.js";
 import "./Graphpage.scss";
-const Graphpage = () => {
-  const categories = ["Personal", "Bills", "Groceries", "Going out"];
 
+const Graphpage = () => {
   const [namedMonth, setNamedMonth] = useState("");
-  const spendingByDateAndCategory = {}; // empty object not array
+  const [spendingByCategory, setSpendingByCategory] = useState({});
 
   const currentDate = new Date();
-
   const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
   const [month, setMonth] = useState(currentMonth);
 
-  UserData.forEach((data) => {
-    if (data.date.includes(`/${month}/`)) {
-      if (!spendingByDateAndCategory[data.category]) {
-        spendingByDateAndCategory[data.category] = 0; // Initialize spending for the category
-      }
-      spendingByDateAndCategory[data.category] += data.spent; // Accumulate spending amount
-    }
-  });
-
   useEffect(() => {
     handleMonths();
+    const updatedSpendingByCategory = {};
+
+    UserData.forEach((data) => {
+      if (data.date.includes(`/${month}/`)) {
+        if (!updatedSpendingByCategory[data.category]) {
+          updatedSpendingByCategory[data.category] = 0;
+        }
+        updatedSpendingByCategory[data.category] += data.spent;
+      }
+    });
+
+    setSpendingByCategory(updatedSpendingByCategory);
   }, [month]);
 
-  const labels = Object.keys(spendingByDateAndCategory);
-  const datasets = categories.map((category) => ({
-    label: category,
-    data: labels.map((category) => spendingByDateAndCategory[category] || 0),
-  }));
+  const labels = Object.keys(spendingByCategory);
+  const datasets = [
+    {
+      label: "Monthly expenditure",
+      data: labels.map((category) => spendingByCategory[category] || 0),
+      backgroundColor: "rgba(75, 192, 192, 0.2)",
+    },
+  ];
 
   const userData = {
     labels: labels,
     datasets: datasets,
   };
+
   const handleButtonDecrease = () => {
     switch (month) {
       case "01":
