@@ -28,7 +28,8 @@ const AddNewExpense = () => {
     handleSubmit();
   };
 
-  const handleSubmit = async (expense) => {
+  const handleSubmit = async () => {
+    const expense = { amount, category, date };
     const result = await fetch("http://localhost:8080/addExpense", {
       method: "POST",
       headers: {
@@ -39,7 +40,7 @@ const AddNewExpense = () => {
 
     if (result.ok) {
       alert("Expense added");
-      const drink = await result.json();
+
     }
   };
 

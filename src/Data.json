@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "category": "Going out",
+    "spent": 1.0,
+    "date": "28/07/2023",
+    "picture": "https://icons.iconarchive.com/icons/google/noto-emoji-activities/256/52707-party-popper-icon.png"
+  },
+  {
+    "id": 2,
+    "category": "Personal",
+    "spent": 13.99,
+    "date": "28/07/2023",
+    "picture": "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png"
+  },
+  {
+    "id": 3,
+    "category": "Groceries",
+    "spent": 20.99,
+    "date": "29/07/2023",
+    "picture": "https://icons.veryicon.com/png/o/food--drinks/yoga-flat-icon/healthy-food.png"
+  },
+  {
+    "id": 4,
+    "category": "Personal",
+    "spent": 1.99,
+    "date": "30/07/2023",
+    "picture": "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png"
+  },
+  {
+    "id": 5,
+    "category": "Going out",
+    "spent": 2.99,
+    "date": "31/07/2023",
+    "picture": "https://icons.iconarchive.com/icons/google/noto-emoji-activities/256/52707-party-popper-icon.png"
+  },
+  {
+    "id": 6,
+    "category": "Groceries",
+    "spent": 11.99,
+    "date": "01/08/2023",
+    "picture": "https://icons.veryicon.com/png/o/food--drinks/yoga-flat-icon/healthy-food.png"
+  },
+  {
+    "id": 7,
+    "category": "Personal",
+    "spent": 11.0,
+    "date": "02/08/2023",
+    "picture": "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png"
+  },
+  {
+    "id": 8,
+    "category": "Going out",
+    "spent": 5.8,
+    "date": "03/08/2023",
+    "picture": "https://icons.veryicon.com/png/o/food--drinks/yoga-flat-icon/healthy-food.png"
+  },
+  {
+    "id": 9,
+    "category": "Groceries",
+    "spent": 12.99,
+    "date": "04/08/2023",
+    "picture": "https://icons.veryicon.com/png/o/food--drinks/yoga-flat-icon/healthy-food.png"
+  },
+  {
+    "id": 10,
+    "category": "Going out",
+    "spent": 11.0,
+    "date": "05/08/2023",
+    "picture": "https://icons.iconarchive.com/icons/google/noto-emoji-activities/256/52707-party-popper-icon.png"
+  },
+  {
+    "id": 11,
+    "category": "Bills",
+    "spent": 5.8,
+    "date": "06/08/2023",
+    "picture": "https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-3d/256/Receipt-3d-icon.png"
+  },
+  {
+    "id": 12,
+    "category": "Groceries",
+    "spent": 12.99,
+    "date": "07/08/2023",
+    "picture": "https://icons.veryicon.com/png/o/food--drinks/yoga-flat-icon/healthy-food.png"
+  },
+  {
+    "id": 13,
+    "category": "Groceries",
+    "spent": 11.0,
+    "date": "08/08/2023",
+    "picture": "https://icons.veryicon.com/png/o/food--drinks/yoga-flat-icon/healthy-food.png"
+  },
+  {
+    "id": 14,
+    "category": "Personal",
+    "spent": 5.8,
+    "date": "09/08/2023",
+    "picture": "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png"
+  },
+  {
+    "id": 15,
+    "category": "Bills",
+    "spent": 12.99,
+    "date": "10/08/2023",
+    "picture": "https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-3d/256/Receipt-3d-icon.png"
+  },
+  {
+    "id": 16,
+    "category": "Personal",
+    "spent": 11.0,
+    "date": "10/08/2023",
+    "picture": "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png"
+  },
+  {
+    "id": 17,
+    "category": "Groceries",
+    "spent": 5.8,
+    "date": "12/08/2023",
+    "picture": "https://icons.veryicon.com/png/o/food--drinks/yoga-flat-icon/healthy-food.png"
+  },
+  {
+    "id": 18,
+    "category": "Personal",
+    "spent": 5.8,
+    "date": "12/08/2023",
+    "picture": "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png"
+  }
+]

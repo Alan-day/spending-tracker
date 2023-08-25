@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Graph from "../../Components/Graph/Graph";
 import Navbar from "../../Components/Navbar/Navbar";
-import { UserData } from "../../Data.js";
+import  Data from "../../Data.json";
 import "./Graphpage.scss";
 import SpendingTilesList from "../../Components/SpendingTilesList/SpendingTilesList";
 
@@ -17,7 +17,7 @@ const Graphpage = () => {
     handleMonths();
     const updatedSpendingByCategory = {};
 
-    UserData.forEach((data) => {
+    Data.forEach((data) => {
       if (data.date.includes(`/${month}/`)) {
         if (!updatedSpendingByCategory[data.category]) {
           updatedSpendingByCategory[data.category] = 0;
@@ -44,7 +44,7 @@ const Graphpage = () => {
   };
 
   const listData = [];
-  for (const data of UserData) {
+  for (const data of Data) {
     if (data.date.includes(`/${month}/`)) {
       listData.push(data);
     }
