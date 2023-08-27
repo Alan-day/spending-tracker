@@ -194,9 +194,11 @@ const Graphpage = () => {
 
   return (
     <div className="graphpage-container">
-      {namedMonth}
-      <Graph chartData={userData} />
-      <div className="graphpage-container__total">{total}</div>
+      <div className="graphpage-container__month"> {namedMonth}</div>
+      <div className="graphpage-container__graph">
+        <Graph chartData={userData} />
+      </div>
+      <div className="graphpage-container__total">Total: {total}</div>
       <button
         className="graphpage-container__button"
         onClick={handleButtonDecrease}
