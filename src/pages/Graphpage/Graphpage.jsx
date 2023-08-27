@@ -214,9 +214,8 @@ const Graphpage = () => {
       <div className="tiles-container">
         <SpendingTilesList userData={listData} />
       </div>
-      <div className="navbar-container">
-        <Navbar />
-      </div>
+
+      <Navbar />
     </div>
   );
 };

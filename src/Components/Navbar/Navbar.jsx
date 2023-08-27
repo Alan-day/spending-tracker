@@ -17,15 +17,15 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="homepage-container">
-        <button className="homepage-container__button" onClick={moveToExpense}>
-          £++
+      <div className="navbar-container">
+        <button className="navbar-container__button" onClick={moveToExpense}>
+          &#128183; Add expense
         </button>
-        <button className="homepage-container__button" onClick={moveToGraph}>
-          &#128202;
+        <button className="navbar-container__button" onClick={moveToGraph}>
+          &#128202; Bar chart
         </button>
-        <button className="homepage-container__button" onClick={moveToHomepage}>
-          &#127968;
+        <button className="navbar-container__button" onClick={moveToHomepage}>
+          &#127968; Homepage
         </button>
       </div>
     </>
