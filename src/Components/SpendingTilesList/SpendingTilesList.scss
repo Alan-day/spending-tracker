@@ -1,0 +1,6 @@
+.tiles-list {
+  display: flex;
+  flex-direction: column; /* Arrange tiles vertically */
+  max-height: 400px; /* Adjust this value to your preference */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+}

@@ -1,2 +1,37 @@
+@use "./../../utils/styles.scss" as *;
+
+.tiles-container {
+  display: flex;
+  flex-direction: column; /* Arrange tiles vertically */
+  max-height: 300px; /* Adjust this value to your preference */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+}
+
+.navbar-container {
+  margin-top: 30px;
+}
 .graphpage-container {
+  &__total {
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border: 2px solid orange;
+    background-color: orange;
+    color: navy;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+
+  &__button {
+    background-color: orange;
+    border: none;
+    margin: 5px;
+    padding: 5px;
+    font-weight: 600;
+    font-family: $category-font;
+    border-radius: 10px;
+  }
 }

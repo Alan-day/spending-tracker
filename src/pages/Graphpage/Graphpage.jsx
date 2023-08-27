@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Graph from "../../Components/Graph/Graph";
 import Navbar from "../../Components/Navbar/Navbar";
-import  Data from "../../Data.json";
+import Data from "../../Data.json";
 import "./Graphpage.scss";
 import SpendingTilesList from "../../Components/SpendingTilesList/SpendingTilesList";
 
 const Graphpage = () => {
   const [namedMonth, setNamedMonth] = useState("");
+  const [total, setTotal] = useState("");
   const [spendingByCategory, setSpendingByCategory] = useState({});
 
   const currentDate = new Date();
@@ -27,6 +28,7 @@ const Graphpage = () => {
     });
 
     setSpendingByCategory(updatedSpendingByCategory);
+    totalSpending();
   }, [month]);
 
   const labels = Object.keys(spendingByCategory);
@@ -49,7 +51,15 @@ const Graphpage = () => {
       listData.push(data);
     }
   }
-  console.log(listData);
+
+  const totalSpending = () => {
+    let total = 0;
+    listData.map((element) => {
+      total += element.spent;
+    });
+    const truncatedTotal = parseFloat(total.toFixed(2));
+    setTotal("£" + truncatedTotal);
+  };
 
   const handleButtonDecrease = () => {
     switch (month) {
@@ -184,13 +194,27 @@ const Graphpage = () => {
 
   return (
     <div className="graphpage-container">
-      <button onClick={handleButtonDecrease}>Previous Month</button>
       {namedMonth}
-      <button onClick={handleButtonIncrease}>Next Month</button>
       <Graph chartData={userData} />
-
-      <SpendingTilesList userData={listData} />
-      <Navbar />
+      <div className="graphpage-container__total">{total}</div>
+      <button
+        className="graphpage-container__button"
+        onClick={handleButtonDecrease}
+      >
+        &#11164; Previous month
+      </button>
+      <button
+        className="graphpage-container__button"
+        onClick={handleButtonIncrease}
+      >
+        Next month &#11166;
+      </button>
+      <div className="tiles-container">
+        <SpendingTilesList userData={listData} />
+      </div>
+      <div className="navbar-container">
+        <Navbar />
+      </div>
     </div>
   );
 };

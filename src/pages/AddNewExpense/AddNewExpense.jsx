@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./AddNewExpense.scss";
-
+import Navbar from "../../Components/Navbar/Navbar";
 const AddNewExpense = () => {
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -40,7 +40,6 @@ const AddNewExpense = () => {
 
     if (result.ok) {
       alert("Expense added");
-
     }
   };
 
@@ -90,6 +89,9 @@ const AddNewExpense = () => {
           </label>
           <button type="submit">Submit</button>
         </form>
+        <div className="navbar-container">
+          <Navbar />
+        </div>
       </div>
     </>
   );
