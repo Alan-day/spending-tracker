@@ -207,30 +207,32 @@ const Graphpage = () => {
   };
 
   return (
-    <div className="graphpage-container">
-      <div className="graphpage-container__month"> {namedMonth}</div>
-      <div className="graphpage-container__graph">
-        <Graph chartData={userData} options={options} />
-      </div>
-      <div className="graphpage-container__total">Total: {total}</div>
-      <button
-        className="graphpage-container__button"
-        onClick={handleButtonDecrease}
-      >
-        &#11164; Previous month
-      </button>
-      <button
-        className="graphpage-container__button"
-        onClick={handleButtonIncrease}
-      >
-        Next month &#11166;
-      </button>
-      <div className="tiles-container">
-        <SpendingTilesList userData={listData} />
+    <>
+      <div className="graphpage-container">
+        <div className="graphpage-container__month"> {namedMonth}</div>
+        <div className="graphpage-container__graph">
+          <Graph chartData={userData} options={options} />
+        </div>
+        <div className="graphpage-container__total">Total: {total}</div>
+        <button
+          className="graphpage-container__button"
+          onClick={handleButtonDecrease}
+        >
+          &#11164; Previous month
+        </button>
+        <button
+          className="graphpage-container__button"
+          onClick={handleButtonIncrease}
+        >
+          Next month &#11166;
+        </button>
+        <div className="tiles-container">
+          <SpendingTilesList userData={listData} />
+        </div>
       </div>
 
       <Navbar />
-    </div>
+    </>
   );
 };
 

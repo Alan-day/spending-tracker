@@ -2,9 +2,9 @@
 
 .tiles-container {
   display: flex;
-  flex-direction: column; /* Arrange tiles vertically */
-  max-height: 300px; /* Adjust this value to your preference */
-  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  flex-direction: column; 
+  max-height: 300px; 
+  overflow-y: auto; 
 }
 
 .navbar-container {
