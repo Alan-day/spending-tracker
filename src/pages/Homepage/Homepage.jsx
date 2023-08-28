@@ -25,7 +25,7 @@ const Homepage = () => {
         <p className="homepage-container__paragraph">
           Swift is an expense tracker application that allows you to see how you
           spend your money. When adding an expense you have a few categories to
-          choose from: 'Personal', 'Groceries', 'Going Out' and 'Bills'.{" "}
+          choose from: 'Personal', 'Groceries', 'Going Out' and 'Bills'.
         </p>
         <p className="homepage-container__paragraph">
           Choose 'Personal' for any expenses related to travelling, buying books

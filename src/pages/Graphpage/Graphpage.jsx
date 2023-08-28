@@ -36,7 +36,7 @@ const Graphpage = () => {
     {
       label: "Monthly expenditure",
       data: labels.map((category) => spendingByCategory[category] || 0),
-      backgroundColor: "rgba(75, 192, 192, 0.2)",
+      backgroundColor: ["blue", "red", "orange", "purple"],
     },
   ];
 
@@ -51,7 +51,21 @@ const Graphpage = () => {
       listData.push(data);
     }
   }
-
+  const options = {
+    scales: {
+      x: {
+        display: true,
+      },
+      y: {
+        display: true,
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
   const totalSpending = () => {
     let total = 0;
     listData.map((element) => {
@@ -196,7 +210,7 @@ const Graphpage = () => {
     <div className="graphpage-container">
       <div className="graphpage-container__month"> {namedMonth}</div>
       <div className="graphpage-container__graph">
-        <Graph chartData={userData} />
+        <Graph chartData={userData} options={options} />
       </div>
       <div className="graphpage-container__total">Total: {total}</div>
       <button
