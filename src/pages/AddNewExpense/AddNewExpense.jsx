@@ -22,18 +22,20 @@ const AddNewExpense = () => {
   }, []);
 
   const handleValidation = (event) => {
-    if (date > currentDate) {
+    console.log("Expense state:", expense);
+
+    if (expense.date > currentDate) {
       alert("Date cannot be in the future");
-      return;
     }
 
-    if (amount <= 0) {
+    if (expense.amount === 0) {
       alert("Amount must be greater than zero");
       return;
     }
 
     // handleSubmit();
   };
+
   const handleAvailableDates = () => {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
@@ -67,6 +69,8 @@ const AddNewExpense = () => {
   //   }
   // };
 
+  console.log(expense);
+
   return (
     <>
       <div className="form-container">
@@ -86,7 +90,8 @@ const AddNewExpense = () => {
           <label htmlFor="category">Category:</label>
           <select
             id="category"
-            onInput={(event) =>
+            value={expense.category} // Set the selected value based on the expense state
+            onChange={(event) =>
               setExpense({ ...expense, category: event.target.value })
             }
             className="form-container__element"
