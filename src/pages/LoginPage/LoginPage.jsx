@@ -61,6 +61,15 @@ const LoginPage = ({ setUser }) => {
           </button>
         </div>
       )}
+
+      {errorMessage && (
+        <div className="displayMessage">
+          <h1 className="heading">User not found</h1>
+          <button className="login-container__button" onClick={hideError}>
+            Try again
+          </button>
+        </div>
+      )}
     </div>
   );
 };

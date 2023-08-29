@@ -28,7 +28,7 @@ const AddNewExpense = () => {
     }
 
     if (amount <= 0) {
-      alert("Missing content, unable to proceed");
+      alert("Amount must be greater than zero");
       return;
     }
 
@@ -75,7 +75,7 @@ const AddNewExpense = () => {
           <label>
             Amount
             <input
-              className="form-container--element"
+              className="form-container__element--amount"
               type="number" //prevents adding non-numerical input
               onInput={(event) =>
                 setExpense({ ...expense, amount: event.target.value })
@@ -89,7 +89,7 @@ const AddNewExpense = () => {
             onInput={(event) =>
               setExpense({ ...expense, category: event.target.value })
             }
-            className="form-container--element"
+            className="form-container__element"
           >
             <option value="Personal">Personal</option>
             <option value="Going out">Going out</option>
@@ -103,7 +103,7 @@ const AddNewExpense = () => {
             onInput={(event) =>
               setExpense({ ...expense, date: event.target.value })
             }
-            className="form-container--element"
+            className="form-container__element"
           >
             {availableDates.map((date, index) => (
               <option key={index} value={date}>

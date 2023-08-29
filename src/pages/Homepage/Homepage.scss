@@ -10,7 +10,9 @@
   align-items: center;
 
   &__paragraph {
+    color: navy;
     margin: 10px;
+    font-weight: 600;
     font-family: $primary-font;
   }
 }
