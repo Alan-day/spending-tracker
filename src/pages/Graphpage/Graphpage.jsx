@@ -9,16 +9,37 @@ const Graphpage = () => {
   const [namedMonth, setNamedMonth] = useState("");
   const [total, setTotal] = useState("");
   const [spendingByCategory, setSpendingByCategory] = useState({});
-
+  const [expensesList, setExpensesList] = useState([]);
   const currentDate = new Date();
   const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
   const [month, setMonth] = useState(currentMonth);
 
+  const getList = async () => {
+    const url = "http://localhost:8080/expenses";
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const list = await response.json();
+      setExpensesList(list);
+    } else {
+      console.error(
+        "Failed to fetch data:",
+        response.status,
+        response.statusText
+      );
+    }
+  };
   useEffect(() => {
+    getList();
+    console.log("first");
+  }, []);
+
+  useEffect(() => {
+    console.log(expensesList);
     handleMonths();
     const updatedSpendingByCategory = {};
 
-    Data.forEach((data) => {
+    expensesList.forEach((data) => {
       if (data.date.includes(`/${month}/`)) {
         if (!updatedSpendingByCategory[data.category]) {
           updatedSpendingByCategory[data.category] = 0;
@@ -46,11 +67,12 @@ const Graphpage = () => {
   };
 
   const listData = [];
-  for (const data of Data) {
+  for (const data of expensesList) {
     if (data.date.includes(`/${month}/`)) {
       listData.push(data);
     }
   }
+
   const options = {
     scales: {
       x: {
