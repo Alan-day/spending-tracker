@@ -3,9 +3,6 @@ import "./AddNewExpense.scss";
 import Navbar from "../../Components/Navbar/Navbar";
 import Data from "./../../Data.json";
 const AddNewExpense = () => {
-  const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
-  const [expense, setExpense] = useState("");
   const [availableDates, setAvailableDates] = useState([]);
 
   const currentDate = new Date();
@@ -16,24 +13,32 @@ const AddNewExpense = () => {
   const year = currentDate.getFullYear();
   const formattedDate = `${day}/${month}/${year}`;
 
+  const defaultFormState = {
+    spent: 0,
+    category: "Personal",
+    date: formattedDate,
+    picture:
+      "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png",
+  };
+  
+  const [expense, setExpense] = useState(defaultFormState);
   useEffect(() => {
     setDate(formattedDate);
     handleAvailableDates();
   }, []);
 
-  const handleValidation = (event) => {
-    console.log("Expense state:", expense);
-
-    if (expense.date > currentDate) {
+  const handleValidation = () => {
+    if (expense.date.slice(0, 2) > formattedDate.slice(0, 2)) {
       alert("Date cannot be in the future");
+      return;
     }
 
-    if (expense.amount === 0) {
+    if (expense.spent <= 0) {
       alert("Amount must be greater than zero");
       return;
     }
 
-    // handleSubmit();
+    handleSubmit();
   };
 
   const handleAvailableDates = () => {
@@ -54,22 +59,23 @@ const AddNewExpense = () => {
 
     setAvailableDates(dates);
   };
-  // const handleSubmit = async () => {
-  //   const expense = { amount, category, date };
-  //   const result = await fetch("http://localhost:8080/addExpense", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(expense),
-  //   });
 
-  //   if (result.ok) {
-  //     alert("Expense added");
-  //   }
-  // };
+  const handleSubmit = async () => {
+    const myExpense = expense;
+    const result = await fetch("http://localhost:8080/addExpense", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(myExpense),
+    });
 
-  console.log(expense);
+    if (result.ok) {
+      alert("Expense added");
+    } else {
+      alert("Unable to add this expense");
+    }
+  };
 
   return (
     <>
@@ -79,10 +85,11 @@ const AddNewExpense = () => {
           <label>
             Amount
             <input
+              value={expense.spent}
               className="form-container__element--amount"
               type="number" //prevents adding non-numerical input
               onInput={(event) =>
-                setExpense({ ...expense, amount: event.target.value })
+                setExpense({ ...expense, spent: event.target.value })
               }
             ></input>
           </label>
@@ -90,8 +97,8 @@ const AddNewExpense = () => {
           <label htmlFor="category">Category:</label>
           <select
             id="category"
-            value={expense.category} // Set the selected value based on the expense state
-            onChange={(event) =>
+            value={expense.category}
+            onInput={(event) =>
               setExpense({ ...expense, category: event.target.value })
             }
             className="form-container__element"
@@ -105,6 +112,7 @@ const AddNewExpense = () => {
           <label>Date </label>
           <select
             id="date"
+            value={expense.date}
             onInput={(event) =>
               setExpense({ ...expense, date: event.target.value })
             }
