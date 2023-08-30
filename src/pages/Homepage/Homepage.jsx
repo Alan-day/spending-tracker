@@ -6,18 +6,6 @@ import Navbar from "../../Components/Navbar/Navbar";
 const Homepage = () => {
   const navigate = useNavigate();
 
-  const moveToExpense = () => {
-    return navigate("/addExpense");
-  };
-
-  const moveToGraph = () => {
-    return navigate("/graph");
-  };
-
-  const moveToHomepage = () => {
-    return navigate("/homepage");
-  };
-
   return (
     <>
       <div className="homepage-container">

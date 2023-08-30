@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Navbar.scss";
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -14,6 +15,9 @@ const Navbar = () => {
   const moveToHomepage = () => {
     return navigate("/homepage");
   };
+  const moveToPiechart = () => {
+    return navigate("/piechart");
+  };
 
   return (
     <>
@@ -26,6 +30,9 @@ const Navbar = () => {
         </button>
         <button className="navbar-container__button" onClick={moveToHomepage}>
           &#127968; Homepage
+        </button>
+        <button className="navbar-container__button" onClick={moveToPiechart}>
+          &#129383; Piechart
         </button>
       </div>
     </>

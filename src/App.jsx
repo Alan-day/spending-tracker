@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { React, useState } from "react";
 import Graphpage from "./pages/Graphpage/Graphpage";
 import AddNewExpense from "./pages/AddNewExpense/AddNewExpense";
+import Piechartpage from "./pages/Piechartpage/Piechartpage";
 function App() {
   const [user, setUser] = useState(true);
 
@@ -18,6 +19,7 @@ function App() {
               <Route path="/homepage" element={<Homepage />} />
               <Route path="/addExpense" element={<AddNewExpense />} />
               <Route path="/graph" element={<Graphpage />} />
+              <Route path="/piechart" element={<Piechartpage />} />
             </>
           )}
         </Routes>
