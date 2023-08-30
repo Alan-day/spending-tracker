@@ -12,28 +12,67 @@ const AddNewExpense = () => {
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
   const year = currentDate.getFullYear();
   const formattedDate = `${day}/${month}/${year}`;
+  const [picture, setPicture] = useState("");
 
   const defaultFormState = {
     spent: 0,
     category: "Personal",
     date: formattedDate,
     picture:
-      "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png",
+      "https://static.vecteezy.com/system/resources/previews/005/720/180/non_2x/pound-icon-british-currency-symbol-illustration-coin-symbol-free-vector.jpg",
   };
-  
+
   const [expense, setExpense] = useState(defaultFormState);
+
   useEffect(() => {
     setDate(formattedDate);
     handleAvailableDates();
   }, []);
 
+  const handleCategoryPicture = (category) => {
+    // still having errors
+    switch (category) {
+      case "Groceries":
+        setPicture(
+          "https://icons.veryicon.com/png/o/food--drinks/yoga-flat-icon/healthy-food.png"
+        );
+        break;
+      case "Going out":
+        setPicture(
+          "https://icons.iconarchive.com/icons/google/noto-emoji-activities/256/52707-party-popper-icon.png"
+        );
+        break;
+      case "Personal":
+        setPicture(
+          "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png"
+        );
+        break;
+      case "Bills":
+        setPicture(
+          "https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-3d/256/Receipt-3d-icon.png"
+        );
+        break;
+      default:
+        setPicture(
+          "https://static.vecteezy.com/system/resources/previews/005/720/180/non_2x/pound-icon-british-currency-symbol-illustration-coin-symbol-free-vector.jpg"
+        );
+        break;
+    }
+  };
+
   const handleValidation = () => {
+    console.log(picture);
+
+    handleCategoryPicture(expense.category);
+
     if (expense.date.slice(0, 2) > formattedDate.slice(0, 2)) {
+      // exception handler I used for setting a date in the future
       alert("Date cannot be in the future");
       return;
     }
 
     if (expense.spent <= 0) {
+      // prevents default input
       alert("Amount must be greater than zero");
       return;
     }
@@ -48,7 +87,7 @@ const AddNewExpense = () => {
 
     const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
 
-    // Generate all dates in the current month
+    // Generate all dates in the current month for the dropdown menu
     const dates = [];
     for (let day = 1; day <= daysInMonth; day++) {
       const formattedDate = `${String(day).padStart(2, "0")}/${String(
@@ -87,10 +126,18 @@ const AddNewExpense = () => {
             <input
               value={expense.spent}
               className="form-container__element--amount"
-              type="number" //prevents adding non-numerical input
-              onInput={(event) =>
-                setExpense({ ...expense, spent: event.target.value })
-              }
+              type="text" //prevents adding non-numerical input
+              onChange={(event) => {
+                const inputText = event.target.value;
+
+                // Allow the input to be empty or match the desired format
+                const validInput =
+                  inputText === "" || /^\d+(\.\d{0,2})?$/.test(inputText);
+
+                if (validInput) {
+                  setExpense({ ...expense, spent: inputText });
+                }
+              }}
             ></input>
           </label>
 
