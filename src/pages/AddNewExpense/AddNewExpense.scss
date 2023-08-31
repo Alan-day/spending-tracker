@@ -8,6 +8,10 @@ html {
   flex-direction: column;
   align-items: center;
   background-color: rgb(248, 248, 188);
+
+  &__heading {
+    font-family: $another-font;
+  }
   &__element {
     padding-left: 10px;
     border-radius: 10px;

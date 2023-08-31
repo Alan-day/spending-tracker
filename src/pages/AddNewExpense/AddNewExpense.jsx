@@ -19,7 +19,7 @@ const AddNewExpense = () => {
     category: "Personal",
     date: formattedDate,
     picture:
-      "https://static.vecteezy.com/system/resources/previews/005/720/180/non_2x/pound-icon-british-currency-symbol-illustration-coin-symbol-free-vector.jpg",
+      "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Personal-Metro-icon.png",
   };
 
   const [expense, setExpense] = useState(defaultFormState);
@@ -61,12 +61,10 @@ const AddNewExpense = () => {
   };
 
   const handleValidation = () => {
-    console.log(picture);
-
     handleCategoryPicture(expense.category);
 
     if (expense.date.slice(0, 2) > formattedDate.slice(0, 2)) {
-      // exception handler I used for setting a date in the future
+      // exception handler I used in case of setting a date in the future
       alert("Date cannot be in the future");
       return;
     }
@@ -130,9 +128,9 @@ const AddNewExpense = () => {
               onChange={(event) => {
                 const inputText = event.target.value;
 
-                // Allow the input to be empty or match the desired format
+                // Allowed the input to be empty or match the desired format
                 const validInput =
-                  inputText === "" || /^\d+(\.\d{0,2})?$/.test(inputText);
+                  inputText === "" || /^\d+(\.\d{0,2})?$/.test(inputText); // reg ex for 2 decimal numbers after the dot
 
                 if (validInput) {
                   setExpense({ ...expense, spent: inputText });
@@ -172,9 +170,7 @@ const AddNewExpense = () => {
             ))}
           </select>
 
-          <button type="submit" className="form-container__button">
-            Submit
-          </button>
+          <button className="form-container__button">Submit</button>
         </form>
         <div className="navbar-container">
           <Navbar />

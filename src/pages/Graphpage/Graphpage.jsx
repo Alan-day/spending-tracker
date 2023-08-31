@@ -31,11 +31,9 @@ const Graphpage = () => {
   };
   useEffect(() => {
     getList();
-    console.log("first");
   }, []);
 
   useEffect(() => {
-    console.log(expensesList);
     handleMonths();
     const updatedSpendingByCategory = {};
 

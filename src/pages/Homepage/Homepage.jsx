@@ -1,15 +1,13 @@
 import { React } from "react";
 import "./Homepage.scss";
-import { useNavigate } from "react-router-dom";
+
 import Navbar from "../../Components/Navbar/Navbar";
 
 const Homepage = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <div className="homepage-container">
-        <h1 className="login-container__heading">£wift</h1>
+        <h1 className="login-container__heading">Swi£t</h1>
         <p className="homepage-container__paragraph">
           Swift is an expense tracker application that allows you to see how you
           spend your money. When adding an expense you have a few categories to

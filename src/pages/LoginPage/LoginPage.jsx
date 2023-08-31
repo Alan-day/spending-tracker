@@ -44,7 +44,7 @@ const LoginPage = ({ setUser }) => {
   console.log(email);
   return (
     <div className="login-container">
-      <h1 className="login-container__heading">£wift</h1>
+      <h1 className="login-container__heading">Swi£t</h1>
       <LoginForm
         handleSubmit={handleSubmit}
         password={password}
